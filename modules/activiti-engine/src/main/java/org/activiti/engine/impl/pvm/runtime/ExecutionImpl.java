@@ -628,7 +628,7 @@ public class ExecutionImpl implements
   // toString /////////////////////////////////////////////////////////////////
   
   public String toString() {
-    if (isProcessInstance()) {
+    if (isProcessInstanceType()) {
       return "ProcessInstance["+getToStringIdentity()+"]";
     } else {
       return (isConcurrent? "Concurrent" : "")+(isScope() ? "Scope" : "")+"Execution["+getToStringIdentity()+"]";
@@ -641,7 +641,7 @@ public class ExecutionImpl implements
   
   // customized getters and setters ///////////////////////////////////////////
 
-  public boolean isProcessInstance() {
+  public boolean isProcessInstanceType() {
     ensureParentInitialized();
     return parent==null;
   }

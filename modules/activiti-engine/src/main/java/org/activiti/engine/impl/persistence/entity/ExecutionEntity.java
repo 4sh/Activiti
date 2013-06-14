@@ -632,7 +632,7 @@ public class ExecutionEntity extends VariableScopeImpl implements ActivityExecut
   
   protected void ensureProcessInstanceInitialized() {
     if ((processInstance == null) && (processInstanceId != null)) {
-      processInstance =  Context
+      processInstance = Context
         .getCommandContext()
         .getExecutionManager()
         .findExecutionById(processInstanceId);
@@ -646,7 +646,7 @@ public class ExecutionEntity extends VariableScopeImpl implements ActivityExecut
     }
   }
   
-  public boolean isProcessInstance() {
+  public boolean isProcessInstanceType() {
     return parentId == null;
   }
 
@@ -756,7 +756,7 @@ public class ExecutionEntity extends VariableScopeImpl implements ActivityExecut
   
   protected ScopeImpl getScope() {
     ScopeImpl scope = null;
-    if (isProcessInstance()) {
+    if (isProcessInstanceType()) {
       scope = getProcessDefinition();
     } else {
       scope = getActivity();
@@ -970,7 +970,7 @@ public class ExecutionEntity extends VariableScopeImpl implements ActivityExecut
   // toString /////////////////////////////////////////////////////////////////
   
   public String toString() {
-    if (isProcessInstance()) {
+    if (isProcessInstanceType()) {
       return "ProcessInstance["+getToStringIdentity()+"]";
     } else {
       return (isConcurrent? "Concurrent" : "")+(isScope ? "Scope" : "")+"Execution["+getToStringIdentity()+"]";
